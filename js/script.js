@@ -17,7 +17,7 @@ function apiSearch(event) {
             output.results.forEach(function(item) {
                 let nameItem = item.name || item.title;
                 inner += `
-            <div class = 'col-12 col-md-4 col-xl-3 item'>
+            <div class = 'col-sm-6 item'>
             <img src= "${urlPoster + item.poster_path}" alt = "${nameItem}">
             <h5>${nameItem}</h5>
             </div>
