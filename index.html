@@ -12,10 +12,33 @@
         img {
 			max-width: 100%;
 		}
+
 		.item {
 			margin: 0;
 			text-align: center;
 		}
+		
+		.spinner {
+      margin: 0 auto;
+      width: 64px;
+      height: 64px;
+      border-top: solid 5px #000;
+      border-bottom: solid 5px #000;
+      border-left: solid 5px #fff;
+      border-right: solid 5px #fff;
+      border-radius: 50%;
+      animation: spin 500ms linear;
+      animation-iteration-count: infinite;
+
+		}
+
+		@keyframes spin {
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
 
 	</style>
     <div class="container">
