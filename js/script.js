@@ -6,7 +6,7 @@ function apiSearch(event) {
     const searchText = document.querySelector(".form-control").value;
     const server = "https://api.themoviedb.org/3/search/multi?api_key=ad2b38c3623133c5e9dd093465546d14&language=ru&query=" + searchText;
     requestApi(server);
-}
+};
 
 searchForm.addEventListener("submit", apiSearch);
 
@@ -28,4 +28,5 @@ function requestApi(url) {
         });
         movie.innerHTML = inner;
     });
-}
+};
+
