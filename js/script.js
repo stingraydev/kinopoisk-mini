@@ -62,6 +62,7 @@ function showFullInfo() {
     } else {
         movie.innerHTML = "<h2 class = 'col-12 text-center text-danger'>Произошла ошибка, повторите позже<h2>";
     }
+
     fetch(url)
         .then(function (value) {
             return value.json();
@@ -76,14 +77,21 @@ function showFullInfo() {
             ${(output.imdb_id) ? `<p class = "text-center"><a href="https://imdb.com/title/${output.imdb_id}" target="_blank">Страница на IMDB.com</a></p>` : ""}
             </div>
             <div class="col-8">
-            <p class="text-primary">Рейтинг: ${output.vote_average}</p>
-            <p>Статус: ${output.status}</p>
-            <p>Премьера: ${output.first_air_date || output.release_date}</p>
+                <p class="text-primary">Рейтинг: ${output.vote_average}</p>
+                <p>Статус: ${output.status}</p>
+                <p>Премьера: ${output.first_air_date || output.release_date}</p>
             
-            ${(output.last_episode_to_air) ? `<p>${output.number_of_seasons} сезонов ${output.last_episode_to_air.episode_number} серий вышло </p>` : ""}
-            <p class="overview"><i>Описание: ${output.overview}</i></p>    
-</div>
-`;
+                ${(output.last_episode_to_air) ? `<p>${output.number_of_seasons} сезонов ${output.last_episode_to_air.episode_number} серий вышло </p>` : ""}
+                <p class="overview"><i>Описание: ${output.overview}</i></p>
+            
+                <br>
+                <div class="youtube">
+            
+                </div>    
+            </div>
+            `;
+
+
         })
         .catch(function (reason) {
             movie.innerHTML = "Упс, что-то пошло не так";
@@ -122,5 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("error:" + reason.status);
         });
 });
+
+
 
 
