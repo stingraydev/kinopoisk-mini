@@ -25,25 +25,33 @@ function apiSearch(event) {
             output.results.forEach(function (item) {
                 let nameItem = item.name || item.title;
                 const poster = item.poster_path ? urlPoster + item.poster_path : "./img/no_poster.jpg";
+                let dataInfo = "";
+                if (item.media_type !== "person") dataInfo = `data-id="${item.id}" data-type="${item.media_type}"`;
                 inner += `<div class = 'col-md-6 col-lg-4 col-xl-2 item'>
-            <img src= "${poster}" class = "img_poster" alt = "${nameItem}">
+            <img src= "${poster}" class = "img_poster" alt = "${nameItem}" ${dataInfo}>
             <h5>${nameItem}</h5>
             </div>
             `;
             });
             movie.innerHTML = inner;
 
-            const media = movie.querySelectorAll(".item");
-            media.forEach(function (elem) {
-                elem.addEventListener("click", showFullInfo);
-            })
+            addEventMedia();
         })
         .catch(function (reason) {
             movie.innerHTML = "Упс, что-то пошло не так";
             console.log("error:" + reason.status);
         });
-};
+}
+
 searchForm.addEventListener("submit", apiSearch);
+
+function addEventMedia() {
+    const media = movie.querySelectorAll("img[data-id]");
+        media.forEach(function(elem){
+            elem.style.cursor = "pointer";
+            elem.addEventListener("click", showFullInfo);
+        });
+}
 
 function showFullInfo() {
     console.log(this);
