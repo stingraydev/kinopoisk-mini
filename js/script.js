@@ -16,6 +16,7 @@ function apiSearch(event) {
             let inner = "";
             output.results.forEach(function(item) {
                 let nameItem = item.name || item.title;
+                const poster = item.poster_path ? urlPoster + item.poster_path : "./img/no_poster.jpg";
                 inner += `
             <div class = 'col-md-6 col-lg-4 col-xl-2 item'>
             <img src= "${urlPoster + item.poster_path}" alt = "${nameItem}">
@@ -31,3 +32,5 @@ function apiSearch(event) {
         });
 };
 searchForm.addEventListener("submit", apiSearch);
+
+
